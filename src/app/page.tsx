@@ -1,4 +1,5 @@
 import Image from "next/image"
+import axios from "axios"
 
 const getBaseUrl = () => {
   if (process.env.NEXT_PUBLIC_VERCEL_ENV === "production")
@@ -9,20 +10,13 @@ const getBaseUrl = () => {
 }
 
 async function getData() {
-  const res = await fetch(`${getBaseUrl()}/api/shops/yahoo`)
-  console.log(getBaseUrl(), "getBaseUrl")
-
-  const data = await res.json()
+  const res = await axios.get(`${getBaseUrl()}/api/shops/yahoo`)
+  console.log(res.data.data, "**********")
 
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
 
-  if (!res.ok || !Array.isArray(data?.data)) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error("Failed to fetch data")
-  }
-  return data?.data ?? []
-  // return res.json()
+  return res.data.data
 }
 
 export default async function Home() {
