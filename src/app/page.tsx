@@ -11,7 +11,11 @@ const getBaseUrl = () => {
 
 async function getData() {
   const res = await fetch(`${getBaseUrl()}/api/shops/yahoo`).then(async (v) => {
-    return await v.json()
+    console.log(v.ok)
+    if (v.ok) {
+      return await v.json()
+    }
+    return []
   })
 
   // The return value is *not* serialized
