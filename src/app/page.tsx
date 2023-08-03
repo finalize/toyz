@@ -1,7 +1,10 @@
 import Image from "next/image"
 
 async function getData() {
-  const res = await fetch("https://toyz.vercel.app/api/shops/yahoo")
+  console.log(process.env.NEXT_PUBLIC_API_DOMAIN)
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_DOMAIN}/api/shops/yahoo`
+  )
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
 
