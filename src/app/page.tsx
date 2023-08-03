@@ -18,9 +18,6 @@ async function getData() {
     return []
   })
 
-  // The return value is *not* serialized
-  // You can return Date, Map, Set, etc.
-
   return res
 }
 

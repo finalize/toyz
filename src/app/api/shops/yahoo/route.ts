@@ -15,7 +15,7 @@ export async function GET(request: Request) {
     .map((item) => item.attribs["src"])
 
   return NextResponse.json(
-    { data: results },
+    { data: results ?? [] },
     {
       status: 200
     }
