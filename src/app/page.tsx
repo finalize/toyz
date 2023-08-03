@@ -11,15 +11,18 @@ const getBaseUrl = () => {
 async function getData() {
   const res = await fetch(`${getBaseUrl()}/api/shops/yahoo`)
   console.log(getBaseUrl(), "getBaseUrl")
+
+  const data = await res.json()
+
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
 
-  if (!res.ok) {
+  if (!res.ok || !Array.isArray(data?.data)) {
     // This will activate the closest `error.js` Error Boundary
     throw new Error("Failed to fetch data")
   }
-
-  return res.json()
+  return data?.data ?? []
+  // return res.json()
 }
 
 export default async function Home() {
@@ -29,7 +32,7 @@ export default async function Home() {
 
   return (
     <main className="">
-      {data?.data.map((value: string) => (
+      {data?.map((value: string) => (
         <img src={value} alt="" />
       ))}
     </main>
