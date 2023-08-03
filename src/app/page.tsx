@@ -9,8 +9,8 @@ const getBaseUrl = () => {
 }
 
 async function getData() {
-  console.log(process.env, getBaseUrl())
   const res = await fetch(`${getBaseUrl()}/api/shops/yahoo`)
+  console.log(res.json(), "json")
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
 
