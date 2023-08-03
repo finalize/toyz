@@ -10,7 +10,7 @@ const getBaseUrl = () => {
 
 async function getData() {
   const res = await fetch(`${getBaseUrl()}/api/shops/yahoo`)
-  console.log(res.json(), "json")
+  console.log(getBaseUrl(), "getBaseUrl")
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
 
@@ -24,6 +24,8 @@ async function getData() {
 
 export default async function Home() {
   const data = await getData()
+
+  console.log(data, "data")
 
   return (
     <main className="">
