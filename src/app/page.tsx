@@ -9,28 +9,13 @@ const getBaseUrl = () => {
   return "http://127.0.0.1:3000"
 }
 
-async function getData() {
-  const res = await fetch(`${getBaseUrl()}/api/shops/yahoo`).then(async (v) => {
-    console.log(v.ok)
-    if (v.ok) {
-      return await v.json()
-    }
-    return []
-  })
-
-  return res
-}
-
 export default async function Home() {
-  const data = await getData()
-
-  // console.log(data, "data")
-
   return (
     <main className="">
-      {data?.data.map((value: string) => (
-        <img src={value} alt="" />
-      ))}
+      <img
+        src="https://img.mandarake.co.jp/webshopimg/02/01/789/0201945789/s_02019457890.jpg"
+        alt=""
+      />
     </main>
   )
 }
